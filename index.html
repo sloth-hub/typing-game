@@ -6,30 +6,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Game</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
-    <div class="header">
-        <h1>타이핑 마스터</h1>
-    </div>
-    <div class="word-display">
-        Hello!
-    </div>
-    <div class="word-input-box">
-        <input type="text" class="word-input" disabled/>
-    </div>
-    <div class="game-info">
-        <div>
-            남은시간 : <span class="time">0</span>초
+    <div class="wrap">
+        <div class="word-display title">
+            Typing Game
         </div>
-        <div>
-            획득점수 : <span class="score">0</span>점
+        <div class="word-input-box">
+            <input type="text" class="word-input hide"/>
         </div>
+        <div class="game-info hide">
+            <div>
+                TIME : <span class="time">0</span> sec
+            </div>
+            <div>
+                SCORE : <span class="score">0</span>
+            </div>
+        </div>
+        <button class="button loading" onclick="run()">Loading...</button>
+        <script src="main.js"></script>
     </div>
-    <button class="button loading" onclick="run()">게임 불러오는중..</button>
-    <script src="js/main.js"></script>
 </body>
 
 </html>

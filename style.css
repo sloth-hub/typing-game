@@ -5,25 +5,42 @@
 
 body {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ccc;
+}
+
+.wrap {
+    background-color: #fff;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 80%;
+    height: 80%;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.header {
-    width: 100%;
-    background: #375999;
-    color: white;
-    text-align: center;
-    padding: 1rem;
+    animation: fadein 2s;
 }
 
 .word-display {
-    margin-top: 3rem;
     font-size: 80px;
     color: #375999;
-    /* user-select:none; */
+    text-align: center;
+    transition: font-size .2s linear;
 }
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
 
 .word-input-box {
     margin-top: 2rem;
@@ -42,6 +59,10 @@ body {
     width: 220px;
 }
 
+.hide {
+    display: none;
+}
+
 .time, .score {
     font-size: 30px;
 }
@@ -55,9 +76,20 @@ body {
     border: none;
     margin-top: 3rem;
     cursor: pointer;
+    animation-name: fadein;
 }
 
 .loading {
     background: #ccc;
     cursor: not-allowed;
+}
+
+.title {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 769px) {
+    .title {
+        font-size: 50px;
+    }
 }

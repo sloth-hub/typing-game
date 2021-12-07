@@ -17,7 +17,7 @@ const gameInfo = document.querySelector(".game-info");
 init();
 
 function init() {
-    buttonChange("게임 로딩중...");
+    buttonChange("Loading...");
     getWord();
     wordInput.addEventListener("input", checkMatch);
 }
@@ -25,8 +25,10 @@ function init() {
 // 게임 실행
 function run() {
     if (!isPlaying) {
-        wordInput.disabled = false;
         isPlaying = true;
+        wordDisplay.classList.remove("title");
+        wordInput.classList.remove("hide");
+        gameInfo.classList.remove("hide");
     }
     isPlaying = true;
     time = GAME_TIME;
@@ -36,14 +38,17 @@ function run() {
     scoreDisplay.innerText = 0;
     timeInterval = setInterval(countDown, 1000);
     checkInterval = setInterval(checkStatus, 50);
-    buttonChange("게임중");
+    buttonChange("cheer up!");
+    wordInput.disabled = false;
+    button.disabled = true;
 }
 
 function checkStatus() {
     if (isPlaying && time === 0) {
-        buttonChange("게임 시작");
+        buttonChange("START");
         clearInterval(checkInterval);
-        console.log("게임오버", isPlaying);
+        wordInput.disabled = true;
+        button.disabled = false;
     }
 }
 
@@ -56,7 +61,7 @@ function getWord() {
                     words.push(word);
                 }
             });
-            buttonChange("게임 시작");
+            buttonChange("START");
         })
         .catch((error) => console.log(error));
 }
@@ -71,7 +76,7 @@ function checkMatch() {
         if (!isPlaying) {
             return;
         }
-        score++;
+        score+=10;
         scoreDisplay.innerText = score;
         time = GAME_TIME;
         const randomIndex = Math.floor(Math.random() * words.length);
@@ -90,5 +95,5 @@ function countDown() {
 
 function buttonChange(text) {
     button.innerText = text;
-    text === "게임 시작" ? button.classList.remove("loading") : button.classList.add("loading");
+    text === "START" ? button.classList.remove("loading") : button.classList.add("loading");
 }
