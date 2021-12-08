@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Noto+Sans+KR:wght@300&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 body {
@@ -21,7 +24,30 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    animation: fadein 2s;
+    position: relative;
+    animation: fadein 3s;
+}
+
+header {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.nav {
+    text-decoration: none;
+    font-weight: bold;
+    color: #375999;
+    opacity: .6;
+    transition: all .3s linear;
+}
+
+.nav + .nav {
+    margin-left: 3px;
+}
+
+.nav:hover {
+    opacity: 1;
 }
 
 .word-display {
@@ -31,16 +57,9 @@ body {
     transition: font-size .2s linear;
 }
 
-@keyframes fadein {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+.title {
+    font-weight: bold;
 }
-
 
 .word-input-box {
     margin-top: 2rem;
@@ -49,6 +68,12 @@ body {
 .word-input {
     padding: 0.5rem;
     width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    transition: all .1s linear;
+}
+.word-input:focus-visible {
+    outline: 3px solid#375999;
 }
 
 .game-info {
@@ -59,33 +84,75 @@ body {
     width: 220px;
 }
 
-.hide {
-    display: none;
+.game-info div {
+    display: flex;
+    align-items: center;
 }
 
 .time, .score {
+    margin-left: 3px;
     font-size: 30px;
+    color: #375999;
 }
-
 
 .button {
     width: 220px;
     height: 35px;
-    background: #375999;
-    color: #fff;
-    border: none;
+    border: 3px solid #375999;
+    background: none;
+    color: #375999;
     margin-top: 3rem;
+    position: relative;
     cursor: pointer;
-    animation-name: fadein;
+    transition: all .3s linear;
+    text-transform: uppercase;
+    z-index: 0;
+}
+
+.button::after {
+    background: #375999;
+    content: '';
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
+    transition: all .3s linear;
+    z-index: -1;
+}
+
+.button:hover {
+    color: white;
+}
+
+.button:hover:after {
+    width: 100%;
 }
 
 .loading {
-    background: #ccc;
+    background-color:#ccc;
+    border: 3px solid #ccc;
+    color: white;
     cursor: not-allowed;
 }
 
-.title {
-    font-weight: bold;
+.button.loading::after {
+    width: 0;
+}
+
+
+.hide {
+    display: none;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media screen and (max-width: 769px) {

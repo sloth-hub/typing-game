@@ -17,7 +17,10 @@ const gameInfo = document.querySelector(".game-info");
 init();
 
 function init() {
-    buttonChange("Loading...");
+    button.addEventListener("click", ()=>{
+        buttonChange("Loading...");
+        run();
+    });
     getWord();
     wordInput.addEventListener("input", checkMatch);
 }
