@@ -12,7 +12,8 @@ const scoreDisplay = document.querySelector(".score");
 const timeDisplay = document.querySelector(".time");
 const button = document.querySelector(".button");
 const gameInfo = document.querySelector(".game-info");
-
+const popup = document.querySelector(".popup");
+const popupscore = document.querySelector(".popup-score");
 
 init();
 
@@ -38,12 +39,14 @@ function run() {
     const randomIndex = Math.floor(Math.random() * words.length);
     wordDisplay.innerText = words[randomIndex];
     wordInput.focus();
+    score = 0;
     scoreDisplay.innerText = 0;
     timeInterval = setInterval(countDown, 1000);
     checkInterval = setInterval(checkStatus, 50);
     buttonChange("cheer up!");
     wordInput.disabled = false;
     button.disabled = true;
+    popup.style.display = "none";
 }
 
 function checkStatus() {
@@ -52,6 +55,8 @@ function checkStatus() {
         clearInterval(checkInterval);
         wordInput.disabled = true;
         button.disabled = false;
+        popup.style.display = "block";
+        popupscore.innerText = score;
     }
 }
 
@@ -86,7 +91,6 @@ function checkMatch() {
         wordDisplay.innerText = words[randomIndex];
     }
 }
-
 
 function countDown() {
     time > 0 ? time-- : isPlaying = false;

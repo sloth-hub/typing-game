@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Noto Sans', sans-serif;
+    color: #222;
 }
 
 body {
@@ -35,19 +36,46 @@ header {
 }
 
 .nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav li {
+    list-style: none;
+}
+
+.nav li:nth-child(1) {
+    margin-right: 3px;
+}
+
+.nav li a {
+    position: relative;
+    padding: 0 5px;
     text-decoration: none;
     font-weight: bold;
-    color: #375999;
-    opacity: .6;
+    color: #ccc;
+    z-index: 0;
+    transition: color .3s linear;
+}
+
+.nav li a:after,
+.button:after {
+    background: #375999;
+    content: '';
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
     transition: all .3s linear;
+    z-index: -1;
 }
 
-.nav + .nav {
-    margin-left: 3px;
+.nav li a:hover {
+    color: #fff;
 }
-
-.nav:hover {
-    opacity: 1;
+.nav li a:hover:after {
+    width: 100%;
 }
 
 .word-display {
@@ -72,6 +100,7 @@ header {
     border-radius: 10px;
     transition: all .1s linear;
 }
+
 .word-input:focus-visible {
     outline: 3px solid#375999;
 }
@@ -109,20 +138,8 @@ header {
     z-index: 0;
 }
 
-.button::after {
-    background: #375999;
-    content: '';
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    width: 0;
-    transition: all .3s linear;
-    z-index: -1;
-}
-
 .button:hover {
-    color: white;
+    color: #fff;
 }
 
 .button:hover:after {
@@ -130,9 +147,9 @@ header {
 }
 
 .loading {
-    background-color:#ccc;
+    background-color: #ccc;
     border: 3px solid #ccc;
-    color: white;
+    color: #fff;
     cursor: not-allowed;
 }
 
@@ -140,6 +157,24 @@ header {
     width: 0;
 }
 
+.popup {
+    display: none;
+    position: absolute;
+    padding: 5rem 6rem;
+    text-align: center;
+    background-color: #375999;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    transition: display;
+}
+
+.popup p {
+    color: #fff;
+}
+
+.popup-score {
+    color: #fff;
+    font-weight: bold;
+}
 
 .hide {
     display: none;

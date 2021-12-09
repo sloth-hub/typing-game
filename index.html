@@ -13,14 +13,16 @@
 <body>
     <div class="wrap">
         <header>
-            <a href="/" class="nav">HOME</a>
-            <a href="https://github.com/sloth-hub/typing-game" class="nav" target="_blanc">GITHUB</a>
+            <ul class="nav">
+                <li><a href="/">HOME</a></li>
+                <li><a href="https://github.com/sloth-hub/typing-game"target="_blanc">GITHUB</a></li>
+            </ul>
         </header>
         <div class="word-display title">
             Typing Game
         </div>
         <div class="word-input-box">
-            <input type="text" class="word-input hide"/>
+            <input type="text" class="word-input hide" />
         </div>
         <div class="game-info hide">
             <div>
@@ -31,6 +33,11 @@
             </div>
         </div>
         <button class="button loading">Loading...</button>
+        <div class="popup">
+            <p>Your score : <span class="popup-score"></span></p>
+            <p>restart?</p>
+            <p>▼</p>
+        </div>
         <script src="main.js"></script>
     </div>
 </body>
